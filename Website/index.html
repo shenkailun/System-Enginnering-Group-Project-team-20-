@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Main</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Main Page</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Sign Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/home-bg.png')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Depth Visor</h1>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+
+
+    <!-- Main Content -->
+    <div class="container">
+          <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="clearfix">
+                  <a class="btn btn-primary float-left" href="#">Record new video</a>
+              </div>
+              <div class="clearfix">
+                  <a class="btn btn-primary float-right" href="#">Sort</a>
+              </div>
+              <div class="post-preview">
+                  <a href="post.html">
+                      <h2 class="post-title">
+                          Record 1
+                      </h2>
+                      <h3 class="post-subtitle">
+                          Patient's discription:xsdasdasdasdasd
+                      </h3>
+                  </a>
+                  <p class="post-meta">
+                      Posted by
+                      <a href="#">Dr.xxx</a>
+                      on Oct 8 , 2018
+                  </p>
+              </div>
+              <!-- Pager -->
+          </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/shenkailun/System-Enginnering-Group-Project-team-20-">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; Team 20</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+  <script src="RecordRTC/RecordRTC.js"></script>
+  <script src="part-of-screen-sharing/screenshot.js"></script>
+  <div id="elementToShare" style="width:50%;height:50%;background:green;">
+  <input></input>
+  
+  </div>
+  <button onclick="start()">start</button>
+  <button onclick="stop()">stop</button>
+  
+  <script>
+  var elementToShare = document.getElementById('elementToShare');
+  var recorder = RecordRTC(elementToShare, {
+      type: 'canvas'
+  });
+  function start(){
+      recorder.startRecording();
+  }
+  
+  function stop(){
+      recorder.stopRecording(function(url) {
+      window.open(url);
+  });
+  }
+  
+  </script>
+
+</html>
