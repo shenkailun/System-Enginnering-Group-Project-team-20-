@@ -66,12 +66,21 @@
     <!-- Main Content -->
     <div class="container">
           <div class="col-lg-8 col-md-10 mx-auto">
+                  <a class="btn btn-primary float-left" href="record.html">Record new video</a>
               <div class="clearfix">
-                  <a class="btn btn-primary float-left" href="#">Record new video</a>
+                  <button class="btn btn-primary float-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      Sort
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li><a href="#">Date</a></li>
+                      <li><a href="#">Patient</a></li>
+                      <li><a href="#">Doctor</a></li>
+                      <li role="separator" class="divider"></li>
+                    </ul>
               </div>
-              <div class="clearfix">
-                  <a class="btn btn-primary float-right" href="#">Sort</a>
-              </div>
+                
+
               <div class="post-preview">
                   <a href="post.html">
                       <h2 class="post-title">
@@ -160,3 +169,7 @@
   </script>
 
 </html>
+
+
+
+}
