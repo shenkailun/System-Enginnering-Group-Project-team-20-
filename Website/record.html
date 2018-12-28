@@ -12,8 +12,10 @@
     </header>
     <main>
         <!-- display camera-->
-        <video controls></video>
-        
+        <video id="vid1"controls></video>
+        <button id="start" >Start Recording</button>
+        <button id="stop">Stop Recording</button>
+        <button id="download">download Recodring</button>
         <!-- display recording-->
         <video id="vid2" controls></video>
         
@@ -21,24 +23,58 @@
     </main>    
     <script>
         
+
+    
+//https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getUserMedia
+//https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject   
+        
         let constraintObj = { 
-            audio: false, 
+            audio: true, 
             video: true,
         }; 
         
-    
-//https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getUserMedia  
         navigator.mediaDevices.getUserMedia(constraintObj)
         .then(function(mediaStreamObj) {
-            let video = document.querySelector('video');
+            let video = document.getElementById('vid1');
                 video.srcObject = mediaStreamObj;
             video.onloadedmetadata = function(ev) {
                 video.play();
             };
+            
+        let mediaRecorder = new MediaRecorder(mediaStreamObj);
+         let chunks = [];
+        
+        document.getElementById("start").addEventListener('click', function(){
+            mediaRecorder.start();
+            chunks = [];
+            console.log('recording');
+        });
+                   
+        document.getElementById("stop").addEventListener("click", StopRecording);
+        function StopRecording(){
+            mediaRecorder.stop();
+            console.log("stop");
+        }
+         mediaRecorder.ondataavailable = function(ev){
+                chunks.push(ev.data);
+            }
+         mediaRecorder.onstop = function(ev){
+            var blob = new Blob(chunks,{ 'type' : 'video/mp4;' });
+            var videoURL = window.URL.createObjectURL(blob);
+            document.getElementById("vid2").src = videoURL;
+         }
+        document.getElementById('download').addEventListener("click",download)
+        function download(){
+            
+        }
         })
         .catch(function(err) { 
-           
+    
         });
+//https://developer.mozilla.org/zh-CN/docs/Web/API/MediaStream_Recording_API
+        
+        
+        
            
     </script>
 </body>
