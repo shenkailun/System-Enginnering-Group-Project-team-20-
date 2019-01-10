@@ -65,7 +65,8 @@
 
     <!-- Main Content -->
     <div class="container">
-          <div class="col-lg-8 col-md-10 mx-auto">
+
+        <div class="col-lg-8 col-md-10 mx-auto">
                   <a class="btn btn-primary float-left" href="record.html">Record new video</a>
               <div class="clearfix">
                   <button class="btn btn-primary float-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -78,9 +79,10 @@
                       <li><a href="#">Doctor</a></li>
                       <li role="separator" class="divider"></li>
                     </ul>
+                  
               </div>
                 
-
+                
               <div class="post-preview">
                   <a href="post.html">
                       <h2 class="post-title">
@@ -120,6 +122,7 @@
               </li>
               <li class="list-inline-item">
                 <a href="https://github.com/shenkailun/System-Enginnering-Group-Project-team-20-">
+                    
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -140,36 +143,12 @@
     <!-- Custom scripts for this template -->
     <script src="js/clean-blog.min.js"></script>
 
-  </body>
 
-  <script src="RecordRTC/RecordRTC.js"></script>
-  <script src="part-of-screen-sharing/screenshot.js"></script>
-  <div id="elementToShare" style="width:50%;height:50%;background:green;">
-  <input></input>
   
-  </div>
-  <button onclick="start()">start</button>
-  <button onclick="stop()">stop</button>
-  
-  <script>
-  var elementToShare = document.getElementById('elementToShare');
-  var recorder = RecordRTC(elementToShare, {
-      type: 'canvas'
-  });
-  function start(){
-      recorder.startRecording();
-  }
-  
-  function stop(){
-      recorder.stopRecording(function(url) {
-      window.open(url);
-  });
-  }
-  
-  </script>
+
 
 </html>
 
 
 
-}
+
