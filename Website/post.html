@@ -18,7 +18,21 @@
 
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
+    
+    <style>
+            #main {
+          width: 1100px;
+          margin: 0 auto; 
+        }
 
+    </style>
+        <style>
+            #video {
+          width: 800px;
+          margin: 0 auto; 
+        }
+
+    </style>
 </head>
 
 <body>
@@ -56,37 +70,56 @@
           </div>
         </div>
       </div>
+        
     </header>
     
     <main>
         <!-- display recording-->
-        <video id="vid2" controls>
-        <source src="a1816176-aeef-4fea-86ff-a3fb81468003.mp4">
         
-        </video>
+        <div id="main">
+             <button class="btn btn-primary " >Time Stamp: </button>
+             <button class="btn btn-primary float-right" > Delete</button>
+            <br>
+          <button class="btn btn-primary" id="FIVE" >0:0:5    </button>
+            <br>
+          <button class="btn btn-primary" id="TWOTHREE" >0:0:9</button>   
         
-        <video width="320" height="240" controls="controls" autoplay="autoplay">
-          <source src="/i/movie.ogg" type="video/ogg" />
-          <source src="/i/movie.mp4" type="video/mp4" />
-          <source src="/i/movie.webm" type="video/webm" />
-          <object data="/i/movie.mp4" width="320" height="240">
-            <embed width="320" height="240" src="/i/movie.swf" />
-          </object>
-        </video>
+            
+            
+            
+ 
+        </div>
+            
+               <div id="video">
+            <video id="vid2" width="800" height="400" controls>
+              <source src="example.mp4" type="video/mp4">
+            </video>       
+        </div>
 
         
-        <!-- could save to canvas and do image manipulation and saving too -->
+        
     </main>    
         
-
-    
-//https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getUserMedia
-//https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject
-//https://developer.mozilla.org/zh-CN/docs/Web/API/MediaStream_Recording_API
+    <script>
+            
+        var video = document.getElementById("vid2");
         
+        document.getElementById("FIVE").addEventListener('click', TimeStampFive);
+        function TimeStampFive(){
+            video.currentTime=5;
+        }
+        
+        document.getElementById("TWOTHREE").addEventListener('click',TimeStampTwo);
+        function TimeStampTwo(){
+            video.currentTime=7
+        }
+         
+        
+    </script>
+    
+         
+    
+    
 
-         
-         
-         
 </body>
 </html>

@@ -18,6 +18,13 @@
 
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
+        <style>
+            #main {
+          width: 900px;
+          margin: 0 auto; 
+        }
+
+    </style>
 
 </head>
 
@@ -60,12 +67,14 @@
     
     <main>
         <!-- display camera-->
-        <video id="vid1"controls></video>
-        <button id="start" >Start Recording</button>
-        <button id="stop">Stop Recording</button>
+        <div id="main">
+
+        <video id="vid1" width="780" height="580"controls></video> 
+        <button id="start" class="btn btn-primary" style="margin-left:50px;" >Start Recording</button>
+        <button id="stop" class="btn btn-primary"style="margin-left:200px;"> Stop Recording</button> 
         <!-- display recording-->
-        <video id="vid2" controls></video>
-        
+        <video id="vid2" width="780" height="580" controls></video>
+        </div>
         <!-- could save to canvas and do image manipulation and saving too -->
     </main>    
     <script>
@@ -96,7 +105,7 @@
         document.getElementById("start").addEventListener('click', StratRecording);
         function StratRecording(){
             mediaRecorder.start();
-            chunks = [];
+            chunks = []; //clean cache after everytime start recording
         }
                    
         document.getElementById("stop").addEventListener("click", StopRecording);
@@ -117,7 +126,7 @@
          
         })
         .catch(function(err) { 
-    
+                console.log("error");
         });
     </script>
 </body>
