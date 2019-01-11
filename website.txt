@@ -1,0 +1,1 @@
+Recording functionality only working on Chrome for now

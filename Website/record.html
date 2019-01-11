@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MediaCapture and Streams API</title>
+    <title>Recording</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -84,50 +84,54 @@
 //https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getUserMedia
 //https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject
 //https://developer.mozilla.org/zh-CN/docs/Web/API/MediaStream_Recording_API
-        
-        let constraintObj = { 
+ //https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/stream
+//https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/MediaRecorder
+        navigator.mediaDevices.getUserMedia({
             audio: true, 
             video: true,
-        }; 
-        
-        navigator.mediaDevices.getUserMedia(constraintObj)
-        .then(function(mediaStreamObj) {
-            let video = document.getElementById('vid1');
-                video.srcObject = mediaStreamObj;
-            
-            video.onloadedmetadata = function(ev) {
-                video.play();
-            };
-            
-        let mediaRecorder = new MediaRecorder(mediaStreamObj);
-        let chunks = [];
-        
-        document.getElementById("start").addEventListener('click', StratRecording);
-        function StratRecording(){
-            mediaRecorder.start();
-            chunks = []; //clean cache after everytime start recording
-        }
-                   
-        document.getElementById("stop").addEventListener("click", StopRecording);
-        function StopRecording(){
-            mediaRecorder.stop();
-        }
-            
-         mediaRecorder.ondataavailable = function(ev){
-                chunks.push(ev.data);
-            }
-         
-         mediaRecorder.onstop = function(ev){
-            var blob = new Blob(chunks,{ 'type' : 'video/mp4;' });
-            var videoURL = window.URL.createObjectURL(blob);
-            document.getElementById("vid2").src = videoURL;
-         }
-         
-         
         })
-        .catch(function(err) { 
+        .then(gotStream)
+        .catch(error);
+        
+        function gotStream(stream) {
+            let video = document.getElementById('vid1');
+
+            //display live camera view
+            video.srcObject = stream; 
+            video.play();
+
+
+            // construct a MediaRecorder; passing stream  to mediarecorder as parameter
+            var mediaRecorder = new MediaRecorder(stream);
+            let chunks = [];
+
+            mediaRecorder.ondataavailable = function(ev){
+                    chunks.push(ev.data);
+                }
+
+            document.getElementById("start").addEventListener('click', StratRecording);
+            function StratRecording(){
+                mediaRecorder.start();
+                chunks = []; //clean cache after everytime start recording
+            }
+
+            document.getElementById("stop").addEventListener("click", StopRecording);
+            function StopRecording(){
+                mediaRecorder.stop();
+            }
+
+             mediaRecorder.onstop = function(ev){
+                var blob = new Blob(chunks,{ 'type' : 'video/mp4;' });
+                var videoURL = window.URL.createObjectURL(blob);
+                var vid2 = document.getElementById("vid2");
+                vid2.src = videoURL;
+             }
+
+        }
+        
+        function error (err){ 
                 console.log("error");
-        });
+        }
     </script>
 </body>
 </html>
